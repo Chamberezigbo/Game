@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/game.css">
+  <title>Document</title>
+</head>
+<body>
+
+  <header class="header">
+    <div>
+      <h2>Name: <span id="username"></span></h2>
+    </div>
+    <div>
+      <h2>score: <span id="score"></span></h2>
+    </div>
+  </header>
+  
+  <div class="header">
+    <button onclick = "resetScore()" class="button">clear score</button>
+    <button onclick="resetAll()" class="button">reset all</button>
+  </div>
+
+  <div class="header">
+    <h1>Game</h1>
+  </div>
+
+  <fieldset>
+    <div id="canvas">
+      <div id="primary-number">7</div>
+      <div id="add"><span id="operator">+</span></div>
+      <div id="secondary-number">10</div>
+      <div id="equal">=</div>
+      <div>
+      <input type="number" id="guess">
+      </div>
+      <div>
+      <button id="btn">check</button>
+      </div>
+    </div>
+          
+  </fieldset>    
+
+  <script>
+    // user to input infor //
+    alert('are you ready to play')
+
+    // generate user Id //
+    let name = localStorage.getItem("name");
+    let score = localStorage.getItem("score");
+    document.getElementById('username').innerHTML = name;
+    document.getElementById('score').innerHTML = score;
+
+    while (name == null || name == '') {
+      if (name == null || name == '') {
+        name = prompt("Please Enter Name");
+        localStorage.setItem("name",name);
+        document.getElementById('username').innerHTML = name;
+
+        score = 0;
+        localStorage.setItem("score",score);
+        document.getElementById('score').innerHTML = score; 
+
+      }
+    }
+
+    
+    //generate random numbers
+    let firstNumber = parseInt(Math.random()*10);
+    let secondNumber = parseInt(Math.random()*10);
+    let total = 0;
+    //get the total
+
+    if(firstNumber >= secondNumber){
+      total = firstNumber - secondNumber;
+      let operator = "-";
+      document.getElementById('operator').innerHTML = operator
+    }
+    else{
+      total = firstNumber + secondNumber;
+      let operator = "+";
+      document.getElementById('operator').innerHTML = operator
+    }
+    
+
+    //display numbers on the canvas
+    let primary = document.getElementById('primary-number');
+      primary.innerHTML = `<p>${firstNumber}</p>`;
+
+    let secondary = document.getElementById('secondary-number');
+      secondary.innerHTML = `<p>${secondNumber}</p>`
+
+   
+
+
+    //get guess from user
+    let button = document.getElementById('btn')
+
+    button.addEventListener('click', function(){
+
+    let guess = document.getElementById('guess').value;
+      guess = Number(guess);
+    //check answer
+    if (guess == total){
+      alert('Correct');
+      score = parseInt(localStorage.getItem("score")) +1;
+      localStorage.setItem("score",score);
+      window.location.reload()
+      } else {
+        alert('Sorry. Incorrect. The correct answer was ' + total + '.')
+         score = parseInt(localStorage.getItem("score")) -1;
+        localStorage.setItem("score",score);
+        window.location.reload()
+
+      }
+    });
+    function resetScore() {
+      score = 0;
+      localStorage.setItem("score",score);
+      window.location.reload()
+    }
+    function resetAll() {
+      localStorage.clear()
+      window.location.reload()
+    }
+  </script>
+</body>
+</html>

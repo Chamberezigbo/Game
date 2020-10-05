@@ -1,0 +1,79 @@
+body{
+  background-color:#16213e;
+}
+.header{
+  text-align:center ;
+}
+#canvas{
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+
+}
+#primary-number {
+  border: #1a1a2e solid 2px;
+  padding: 20px;
+  margin-left: 10px;
+  font-size: 20px;
+  animation: flicker 2s ease alternate infinite;
+  color: #fff;
+}
+#add{
+  padding: 30px;
+}
+#secondary-number{
+  border: #1a1a2e solid 2px;
+  padding: 20px;
+  font-size: 20px;
+  animation: flicker 2s ease alternate infinite;
+  color: #fff;
+}
+#equal{
+  padding: 30px;
+}
+#guess{
+  border:#1a1a2e solid 2px;
+  margin-top: 20px;
+  padding: 15px;
+}
+#btn{
+  margin-top: 19px;
+  background-color: #e94560;
+  padding: 18px;
+  border: none;
+  width: 90px;
+}
+.button{
+  padding: 20px;
+  background-color: #e94560;
+  border: none;
+  margin: 10px;
+  
+}
+@keyframes flicker {
+  0% {
+    margin-top: 30px;
+  }
+  25% {
+    margin-left: 20px;
+  }
+  100% {
+    margin-bottom: 10px;
+  }
+}
+#username{
+  font-size: 35px;
+}
+#score{
+  font-size: 35px;
+}
+h2 ,h1 {
+  color: #fff;
+}
+#operator{
+  color: #fff;
+}
+#equal{
+  color: #fff;
+}
